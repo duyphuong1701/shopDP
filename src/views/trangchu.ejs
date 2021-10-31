@@ -1,0 +1,99 @@
+<div class="section1">
+    <div class="img-new">
+        <!-- <img src="/image/iphone13pro.png" alt="" srcset=""> -->
+        <img src="/image/banner/back2school.png" alt="" srcset="">
+    </div>
+    <div class="img-sale">
+        <!-- <img src="/image/iphone13pro.png" alt="" srcset=""> -->
+        <img src="/image/banner/sale-1.png" alt="" srcset="">
+    </div>
+</div>
+<div class="section2">
+    <div class="title-section2">
+        <a>Sản phẩm giảm sốc</a>
+    </div>
+    <div class="content-section2">
+        <div class="container-content-section2">
+            <% phones.forEach(function(phone) { %>
+                <a href=<%=phone.urlSanPham %> class="a-product">
+                    <div class="product">
+                        <img src=<%=phone.hinhSanPham %>>
+                        <p class="product-name">
+                            <%=phone.tenSanPham %>
+                        </p>
+                        <p class="product-price">
+                            <%=phone.giaSanPham.toString().replace( /\B(?=(\d{3})+(?!\d))/g, "," ) %>đ
+                        </p>
+                    </div>
+                </a>
+                <% }); %>
+        </div>
+    </div>
+</div>
+<div class="section3">
+    <div class="title-section3">
+        <a>Điện thoại phổ biến nhất</a>
+    </div>
+    <div class="content-section3">
+        <div class="container-content-section3">
+            <% phones.forEach(function(phone) { %>
+                <a href=<%=phone.urlSanPham %> class="a-product">
+                    <div class="product">
+                        <img src=<%=phone.hinhSanPham %>>
+                        <p class="product-name">
+                            <%=phone.tenSanPham %>
+                        </p>
+                        <p class="product-price">
+                            <%=phone.giaSanPham.toString().replace( /\B(?=(\d{3})+(?!\d))/g, "," ) %>đ
+                        </p>
+                    </div>
+                </a>
+                <% }); %>
+        </div>
+    </div>
+</div>
+<div class="section4">
+    <div class="title-section4">
+        <a>Máy tính bảng phổ biến nhất</a>
+    </div>
+    <div class="content-section4">
+        <div class="container-content-section4">
+            <% tablets.forEach(function(tablet) { %>
+                <a href=<%=tablet.urlSanPham %> class="a-product">
+                    <div class="product">
+                        <img src=<%=tablet.hinhSanPham %>>
+                        <p class="product-name">
+                            <%=tablet.tenSanPham %>
+                        </p>
+                        <p class="product-price">
+                            <%=tablet.giaSanPham.toString().replace( /\B(?=(\d{3})+(?!\d))/g, "," ) %>đ
+                        </p>
+                    </div>
+                </a>
+                <% }); %>
+        </div>
+    </div>
+</div>
+<div class="section5">
+    <div class="title-section5">
+        <a>Laptop phổ biến nhất</a>
+    </div>
+    <div class="content-section5">
+        <div class="container-content-section5">
+            <% laptops.forEach(function(laptop) { %>
+                <a href=<%=laptop.urlSanPham %> class="a-product">
+                    <div class="product">
+                        <img src=<%=laptop.hinhSanPham %>>
+                        <p class="product-name">
+                            <%=laptop.tenSanPham %>
+                        </p>
+                        <p class="product-price">
+                            <%=laptop.giaSanPham.toString().replace( /\B(?=(\d{3})+(?!\d))/g, "," ) %>đ
+                        </p>
+                    </div>
+                </a>
+                <% }); %>
+
+        </div>
+    </div>
+</div>

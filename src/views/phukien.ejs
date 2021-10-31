@@ -1,0 +1,222 @@
+<div class="filter-bar">
+    <div class="filter-container">
+        <div class="filter-option">
+            <ul>
+                <li class="btn-manufacturer">Hãng</li>
+                <li class="btn-price">Giá</li>
+                <li class="btn-ram">Ram</li>
+                <li class="btn-stogare">Bộ nhớ</li>
+                <li class="btn-pin">Pin</li>
+                <li class="btn-screen">Màn hình</li>
+                <li class="btn-del">Xoá bộ lọc</li>
+                <li class="btn-apply">Áp dụng</li>
+            </ul>
+        </div>
+        <div class="filter-manufacturer">
+            <ul>
+                <li>Apple</li>
+                <li>Samsung</li>
+                <li>Oppo</li>
+                <li>Vivo</li>
+                <li>Xiaomi</li>
+                <li>Realme</li>
+                <li>Nokia</li>
+                <li>Huawei</li>
+            </ul>
+        </div>
+        <div class="filter-price">
+            <ul>
+                <li>0-2 triệu</li>
+                <li>2-4 triệu</li>
+                <li>4-7 triệu</li>
+                <li>7-10 triệu</li>
+                <li>10-15 triệu</li>
+                <li>Trên 15 triệu</li>
+            </ul>
+        </div>
+        <div class="filter-ram">
+            <ul>
+                <li>Dưới 1GB</li>
+                <li>2GB</li>
+                <li>3GB</li>
+                <li>4GB</li>
+                <li>8GB</li>
+                <li>Lớn hơn</li>
+            </ul>
+        </div>
+        <div class="filter-stogare">
+            <ul>
+                <li>Dưới 4GB</li>
+                <li>4GB - 8GB</li>
+                <li>8GB - 16GB</li>
+                <li>16GB - 32GB</li>
+                <li>32GB - 64GB</li>
+                <li>64GB - 128GB</li>
+                <li>Trên 128GB</li>
+            </ul>
+        </div>
+        <div class="filter-pin">
+            <ul>
+                <li>Dưới 3000mAh</li>
+                <li>3000mAh - 4000mAh</li>
+                <li>4000mAh - 5000mAh</li>
+                <li>5000mAh - 6000mAh</li>
+                <li>Trên 6000mAh</li>
+            </ul>
+        </div>
+        <div class="filter-screen">
+            <ul>
+                <li>Dưới 4"</li>
+                <li>4" đến 5"</li>
+                <li>5" đến 6"</li>
+                <li>Trên 6"</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="section-product">
+    <div class="title-product">
+        <a>
+            <%=accessories.length %> Sản phẩm
+        </a>
+        <a>Sắp xếp</a>
+        <form class="form-sort" action="/phukien" method="GET">
+            <select class="product-sort" name="giaSanPham" onchange="this.form.submit()">
+                <option>Sắp xếp</option>
+                <option value=0>Nổi bật</option>
+                <option value=1>Giá tăng dần</option>
+                <option value=-1>Giá giảm dần</option>
+            </select>
+        </form>
+    </div>
+    <div class="content-product">
+        <div class="container-content-product">
+            <% accessories.forEach(function(accessory) { %>
+                <a href=<%=accessory.urlSanPham %> class="a-product" >
+                    <div class="product">
+                        <img src=<%=accessory.hinhSanPham %>>
+                        <p class="product-name">
+                            <%= accessory.tenSanPham %>
+                        </p>
+                        <p class="product-price">
+                            <%= accessory.giaSanPham.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "," ) %>đ
+                        </p>
+                    </div>
+                </a>
+                <% }); %>
+        </div>
+    </div>
+</div>
+<script>
+    const bar = document.getElementsByClassName("filter-bar")
+    const targetDivPrice = document.getElementsByClassName('filter-price');
+    const targetDivRam = document.getElementsByClassName('filter-ram');
+    const targetDivManufacturer = document.getElementsByClassName('filter-manufacturer');
+    const targetDivStogare = document.getElementsByClassName('filter-stogare');
+    const targetDivPin = document.getElementsByClassName('filter-pin');
+    const targetDivScreen = document.getElementsByClassName('filter-screen');
+
+    const btnPrice = document.getElementsByClassName("btn-price");
+    const btnRam = document.getElementsByClassName("btn-ram");
+    const btnManufacturer = document.getElementsByClassName('btn-manufacturer');
+    const btnStogare = document.getElementsByClassName('btn-stogare');
+    const btnPin = document.getElementsByClassName('btn-pin');
+    const btnScreen = document.getElementsByClassName('btn-screen');
+    btnManufacturer[0].onclick = function () {
+        if (targetDivManufacturer[0].style.display !== "none") {
+            targetDivManufacturer[0].style.display = "none";
+            bar[0].style.height = "40px";
+
+        } else {
+            targetDivPrice[0].style.display = "none";
+            targetDivRam[0].style.display = "none";
+            targetDivManufacturer[0].style.display = "flex";
+            targetDivStogare[0].style.display = "none";
+            targetDivPin[0].style.display = "none";
+            targetDivScreen[0].style.display = "none";
+            bar[0].style.height = "100px";
+        }
+    };
+    btnPrice[0].onclick = function () {
+        if (targetDivPrice[0].style.display !== "none") {
+            targetDivPrice[0].style.display = "none";
+            bar[0].style.height = "40px";
+
+        } else {
+            targetDivPrice[0].style.display = "flex";
+            targetDivRam[0].style.display = "none";
+            targetDivManufacturer[0].style.display = "none";
+            targetDivStogare[0].style.display = "none";
+            targetDivPin[0].style.display = "none";
+            targetDivScreen[0].style.display = "none";
+            bar[0].style.height = "100px";
+
+        }
+    };
+    btnRam[0].onclick = function () {
+        if (targetDivRam[0].style.display !== "none") {
+            targetDivRam[0].style.display = "none";
+            bar[0].style.height = "40px";
+
+        } else {
+            targetDivPrice[0].style.display = "none";
+            targetDivRam[0].style.display = "flex";
+            targetDivManufacturer[0].style.display = "none";
+            targetDivStogare[0].style.display = "none";
+            targetDivPin[0].style.display = "none";
+            targetDivScreen[0].style.display = "none";
+            bar[0].style.height = "100px";
+
+        }
+    };
+    // ram
+    btnStogare[0].onclick = function () {
+        if (targetDivStogare[0].style.display !== "none") {
+            targetDivStogare[0].style.display = "none";
+            bar[0].style.height = "40px";
+
+        } else {
+            targetDivPrice[0].style.display = "none";
+            targetDivRam[0].style.display = "none";
+            targetDivManufacturer[0].style.display = "none";
+            targetDivStogare[0].style.display = "flex";
+            targetDivPin[0].style.display = "none";
+            targetDivScreen[0].style.display = "none";
+            bar[0].style.height = "100px";
+
+        }
+    };
+    btnPin[0].onclick = function () {
+        if (targetDivPin[0].style.display !== "none") {
+            targetDivPin[0].style.display = "none";
+            bar[0].style.height = "40px";
+
+        } else {
+            targetDivPrice[0].style.display = "none";
+            targetDivRam[0].style.display = "none";
+            targetDivManufacturer[0].style.display = "none";
+            targetDivStogare[0].style.display = "none";
+            targetDivPin[0].style.display = "flex";
+            targetDivScreen[0].style.display = "none";
+            bar[0].style.height = "100px";
+
+        }
+    };
+    btnScreen[0].onclick = function () {
+        if (targetDivScreen[0].style.display !== "none") {
+            targetDivScreen[0].style.display = "none";
+            bar[0].style.height = "40px";
+
+        } else {
+            targetDivPrice[0].style.display = "none";
+            targetDivRam[0].style.display = "none";
+            targetDivManufacturer[0].style.display = "none";
+            targetDivStogare[0].style.display = "none";
+            targetDivPin[0].style.display = "none";
+            targetDivScreen[0].style.display = "flex";
+            bar[0].style.height = "100px";
+
+
+        }
+    };
+</script>

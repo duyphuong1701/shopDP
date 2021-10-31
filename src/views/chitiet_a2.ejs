@@ -1,0 +1,105 @@
+<div class="product-detail">
+    <div class="product-title">
+        <a class="product-name">
+            <%= accessories.tenSanPham %>
+        </a>
+        <a class="product-code"><b>Mã sản phẩm: </b>
+            <%= accessories.maSanPham %>
+        </a>
+    </div>
+    <div class="product-section">
+        <div class="slide-content">
+            <% for(var i=0; i<accessories.hinhChiTiet.length; i++) {%>
+                <% fullname=accessories.hinhChiTiet[i] %>
+                    <img class="slide-img" src=<%=fullname%>>
+                    <% } %>
+        </div>
+
+        <div class="btn-center">
+            <div class="btn-section">
+                <% for(var i=0; i<accessories.hinhChiTiet.length; i++) {%>
+                    <% fullname=accessories.hinhChiTiet[i] %>
+                        <button class="btn-nth" onclick="currentDiv('<%= i %>')">
+                            <img src=<%=fullname%>>
+                        </button>
+                        <% } %>
+            </div>
+        </div>
+    </div>
+    <div class="product-section2">
+        <div class="product-section2-price-status">
+            <span class="product-section2-price">
+                <%= accessories.giaSanPham.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "," ) %>đ
+            </span>
+            <ion-icon class="product-section2-status" name="checkmark-circle"></ion-icon>
+            <span class="product-section2-status-name">Còn hàng</span>
+        </div>
+
+        <div class="product-section2-color">
+            <% accessories.thongtin['Màu'].forEach(function(accessory) { %>
+                <div class="product-section2-color-item">
+                    <%= accessory %>
+                </div>
+                <% }); %>
+        </div>
+
+        <div class="product-section2-promotion">
+            <div class="product-section2-promotion-item">
+                <ion-icon name="gift"></ion-icon>
+                <span>Mua kèm phụ kiện giảm ngay 20%</span>
+            </div>
+            <div class="product-section2-promotion-item">
+                <ion-icon name="gift"></ion-icon>
+                <span>Giảm ngay 100.000đ cho HS-SV khi mua hàng trực tiếp</span>
+            </div>
+            <div class="product-section2-promotion-item">
+                <ion-icon name="gift"></ion-icon>
+                <span>Mua Bộ cáp sạc nhanh 20W chính hãng giá chỉ 940.000đ (giá niêm yết 1.790.000đ)</span>
+            </div>
+
+
+        </div>
+        <div class="product-section2-info">
+            <b>Tình trạng:</b> Mới 100%, Nguyên Seal, Chưa Kích Hoạt, Đủ Bảo Hành
+            <br>
+            <b>Bộ sản phẩm chuẩn:</b> Thân máy, Cable, Sách hướng dẫn, Cây lấy sim
+            <br>
+            <b>Bảo hành:</b> 12 tháng chính hãng
+        </div>
+        <div class="product-section2-buy">
+            <span class="product-section2-buy-btn">Mua ngay</span>
+        </div>
+    </div>
+
+    <div class="product-section3">
+        <table>
+            <tbody>
+
+
+                <tr>
+                    <td class="title-properties" colspan="2">Thông tin cơ bản</td>
+                </tr>
+                <% for (var key in accessories.thongtin ) { %>
+                    <tr>
+                        <td class="properties">
+                            <%- key %>
+                        </td>
+                        <td>
+                            <%- accessories.thongtin[key] %>
+                        </td>
+                    </tr>
+                    <% } %>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    currentDiv(0);
+    function currentDiv(n) {
+        img = document.getElementsByClassName("slide-img");
+        for (var i = 0; i < img.length; i++) {
+            img[i].style.display = 'none';
+        }
+        img[n].style.display = 'block';
+    }
+</script>
